@@ -9,7 +9,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-PCNKJ45B');</script>
 <!-- End Google Tag Manager -->
-
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -19,17 +18,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
   <meta charset="UTF-8" />
-  <title>الفراعنة لنقل العفش | خدمات نقل العفش المتخصصة</title>
-  <meta name="description" content="تغطية شاملة لنقل العفش في القاهرة والجيزة. مدينة نصر، التجمع، أكتوبر، المعادي، والمدن الجديدة. حلول ذكية لكل منطقة.">
+  <title>الفراعنة لنقل الأثاث | مفهوم جديد للنقل</title>
+  <meta name="description" content="خدمات نقل عفش بمعايير عالمية. فك، تغليف، ونش، وتركيب. نخدم القاهرة والجيزة بأحدث المعدات.">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts -->
+  <!-- Fonts: Tajawal (Headings) + Cairo (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -44,23 +43,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           },
           colors: {
             brand: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e40af',
-              900: '#1e3a8a',
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81', // Deep Indigo
             },
             accent: {
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706',
+              400: '#fb7185',
+              500: '#f43f5e', // Rose
+              600: '#e11d48',
             }
           },
-          boxShadow: {
-            'card': '0 10px 40px -10px rgba(0,0,0,0.08)',
-            'card-hover': '0 20px 50px -12px rgba(37, 99, 235, 0.25)',
+          animation: {
+            'slide-in': 'slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'fade-in': 'fadeIn 1s ease-out forwards',
+            'bounce-slow': 'bounce 3s infinite',
+            'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            slideIn: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
           }
         }
       }
@@ -68,579 +79,752 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </script>
 
   <style>
-    body { background-color: #f8fafc; color: #0f172a; scroll-behavior: smooth; }
-    
-    /* Hero & Animation Styles */
-    .hero-container { position: relative; overflow: hidden; height: 600px; }
-    @media (min-width: 1024px) { .hero-container { height: 750px; } }
-    
-    .hero-slide { position: absolute; inset: 0; display: flex; flex-direction: column-reverse; opacity: 0; pointer-events: none; transition: opacity 0.8s ease; }
-    @media (min-width: 1024px) { .hero-slide { flex-direction: row; } }
-    .hero-slide.active { opacity: 1; pointer-events: auto; z-index: 10; }
-    
-    .hero-text-side { flex: 1; background: white; display: flex; flex-direction: column; justify-content: center; padding: 2rem; position: relative; z-index: 2; transform: translateX(50px); opacity: 0; transition: all 0.8s ease 0.2s; }
-    .hero-image-side { flex: 1.2; position: relative; overflow: hidden; transform: scale(1.1); transition: transform 1.5s ease; }
-    .hero-slide.active .hero-text-side { transform: translateX(0); opacity: 1; }
-    .hero-slide.active .hero-image-side { transform: scale(1); }
+    body { background-color: #f8fafc; color: #1e293b; scroll-behavior: smooth; }
 
-    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    /* --- Hero Slider --- */
+    .hero-wrapper {
+      position: relative;
+      height: 85vh;
+      min-height: 600px;
+      overflow: hidden;
+      background: #000;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 1;
+    }
+    .slide.active { opacity: 1; z-index: 2; }
+    
+    .slide-bg {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.1);
+      transition: transform 10s ease-out;
+    }
+    .slide.active .slide-bg { transform: scale(1); }
+
+    /* Text Animation */
+    .hero-text { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out 0.3s; }
+    .slide.active .hero-text { opacity: 1; transform: translateY(0); }
+
+    /* Thumbnails */
+    .thumb-nav {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      z-index: 20;
+      display: flex;
+      gap: 1rem;
+    }
+    .thumb {
+      width: 80px;
+      height: 50px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0.7;
+    }
+    .thumb.active { border-color: #f43f5e; opacity: 1; transform: scale(1.1); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* --- Hover Expand Gallery (Desktop) --- */
+    .gallery-container {
+      display: flex;
+      gap: 1rem;
+      height: 600px; /* Mobile height for vertical stack */
+    }
+    @media (min-width: 768px) {
+      .gallery-container {
+        height: 400px; /* Desktop height for horizontal row */
+      }
+    }
+    .gallery-item {
+      flex: 1;
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      transition: flex 0.5s ease-in-out;
+      cursor: pointer;
+    }
+    .gallery-item:hover { flex: 3; }
+    .gallery-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; background: linear-gradient(to top, rgba(49, 46, 129, 0.9), rgba(49, 46, 129, 0.2)); }
+    .gallery-content {
+      transform: translateY(20px);
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover .gallery-content { transform: translateY(0); }
+    .gallery-desc {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    .gallery-item:hover .gallery-desc { max-height: 100px; opacity: 1; margin-top: 0.5rem; }
+
+    /* --- Myth Cards --- */
+    .myth-card {
+      perspective: 1000px;
+      height: 250px;
+    }
+    .myth-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border-radius: 1rem;
+    }
+    .myth-card:hover .myth-inner { transform: rotateY(180deg); }
+    .myth-front, .myth-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+    .myth-front { background-color: #fff; border: 1px solid #e2e8f0; }
+    .myth-back { background-color: #312e81; color: white; transform: rotateY(180deg); }
+
+    /* --- Animations --- */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
     .fade-up.show { opacity: 1; transform: translateY(0); }
-    
-    .hover-lift { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; }
-    .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); }
-    
-    /* Problem/Solution Box Styling */
-    .pain-point-box { background: #fef2f2; border-right: 3px solid #ef4444; padding: 8px 12px; margin-bottom: 8px; border-radius: 4px; }
-    .solution-box { background: #f0fdf4; border-right: 3px solid #22c55e; padding: 8px 12px; border-radius: 4px; }
 
-    /* Settings Panel */
-    #settingsPanel { transition: transform 0.3s ease-in-out; }
-    #settingsPanel.closed { transform: translateX(110%); } /* Since RTL, 110% moves it left */
-    /* Fix for RTL translate */
-    [dir="rtl"] #settingsPanel.closed { transform: translateX(-110%); } 
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
   </style>
 </head>
-<body class="overflow-x-hidden relative">
+<body class="font-sans antialiased overflow-x-hidden pb-20 md:pb-0">
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCNKJ45B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KZK4TJ7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<!-- End Google Tag Manager -->
 
-<!-- ================== NAVBAR ================== -->
-<header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+<!-- ================== NAV ================== -->
+<nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="navbar">
   <div class="max-w-7xl mx-auto px-4">
-    <!-- Increased height to h-24 to accommodate larger logo -->
-    <div class="flex items-center justify-between h-24">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
       <a href="#" class="flex items-center gap-3">
-        <!-- Added ID for dynamic editing, made larger (w-28 h-20) -->
-        <img id="navbar-logo" src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/logo.webp" alt="الفراعنة لنقل العفش" class="w-28 h-20 object-contain transition-all duration-300">
-        <!-- Removed 'hidden sm:block' so it shows on mobile now -->
+        <img src="images/logo.webp" alt="Logo" class="w-12 h-12 rounded-lg object-contain bg-slate-50 border border-slate-200">
         <div>
-          <h1 class="font-display font-black text-lg md:text-xl text-brand-900 leading-none">الفراعنة لنقل العفش</h1>
-          <p class="text-xs text-slate-500 font-bold tracking-widest mt-1">SMART MOVING</p>
+          <h1 class="text-2xl font-display font-black text-brand-900 leading-none">الفراعنة لنقل الأثاث</h1>
+          <p class="text-xs text-accent-500 font-bold tracking-widest mt-1">نقل عفش آمن - سريع - مضمون</p>
         </div>
       </a>
-      <nav class="hidden lg:flex items-center gap-8 font-bold text-slate-600 text-sm">
-        <a href="#why" class="hover:text-brand-600 transition-colors">عن الشركة</a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-bold text-slate-600">
+        <a href="#myths" class="hover:text-brand-600 transition-colors">حقائق عن النقل</a>
         <a href="#services" class="hover:text-brand-600 transition-colors">خدماتنا</a>
-        <a href="#areas" class="hover:text-brand-600 transition-colors">مناطق الخدمة</a>
+        <a href="#areas" class="hover:text-brand-600 transition-colors">تغطية المناطق</a>
         <a href="#contact" class="hover:text-brand-600 transition-colors">اتصل بنا</a>
-      </nav>
+      </div>
+
+      <!-- CTA -->
       <div class="flex items-center gap-3">
-        <a href="tel:01010354082" onclick="openCallModal()" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-full font-bold text-sm shadow-lg shadow-brand-500/30 transition-all hover:scale-105 flex items-center gap-2">
-           <i class="fas fa-phone -scale-x-100"></i> <span class="hidden sm:inline">اتصل الآن</span>
-        </a>
-        <button id="mobile-toggle" class="lg:hidden text-2xl text-slate-800 p-2"><i class="fas fa-bars"></i></button>
+        <button onclick="openCallModal()" class="hidden md:flex bg-brand-600 hover:bg-brand-700 text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-lg shadow-brand-500/20 transition-transform hover:scale-105 items-center gap-2">
+          <i class="fas fa-phone-alt -scale-x-100"></i>
+          <span>1004672505</span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-800 p-2"><i class="fas fa-bars"></i></button>
       </div>
     </div>
   </div>
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white absolute w-full left-0 top-full shadow-xl">
-    <div class="p-4 space-y-4 font-bold text-slate-700">
-      <a href="#why" class="block">عن الشركة</a>
-      <a href="#services" class="block">خدماتنا</a>
-      <a href="#areas" class="block">مناطق الخدمة</a>
-      <a href="#contact" class="block">اتصل بنا</a>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full left-0 shadow-xl">
+    <div class="p-4 space-y-3 font-bold text-slate-700 text-center">
+      <a href="#myths" class="block py-2 border-b border-slate-50">حقائق</a>
+      <a href="#services" class="block py-2 border-b border-slate-50">خدماتنا</a>
+      <a href="#areas" class="block py-2 border-b border-slate-50">المناطق</a>
+      <button onclick="openCallModal()" class="w-full bg-brand-600 text-white py-3 rounded-lg mt-2">اتصل الآن</button>
     </div>
+  </div>
+</nav>
+
+<!-- ================== HERO (Thumbnail Nav) ================== -->
+<header class="hero-wrapper">
+  
+  <!-- Slide 1 -->
+  <div class="slide active" id="slide-0">
+    <div class="slide-bg absolute inset-0 bg-cover bg-center" style="background-image: url('images/main_truck.webp');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-900/95 via-brand-900/60 to-transparent"></div>
+    <div class="relative z-10 h-full flex items-center max-w-7xl mx-auto px-4">
+      <div class="hero-text max-w-2xl text-white pt-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-white/20 bg-white/5 backdrop-blur text-xs font-bold mb-6 text-accent-400 uppercase tracking-widest">
+          #1 شركة نقل أثاث
+        </div>
+        <h1 class="text-5xl md:text-7xl font-display font-black mb-6 leading-tight">
+          انقل لبيتك الجديد<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-l from-accent-400 to-white">بأمان وراحة بال</span>
+        </h1>
+        <p class="text-lg text-slate-200 mb-10 leading-relaxed max-w-lg font-light">
+          نحول عملية النقل الصعبة إلى تجربة سلسة. سيارات مغلقة، عمالة مدربة، وضمان شامل على كل قطعة أثاث.
+        </p>
+        <div class="flex gap-4">
+          <button onclick="openCallModal()" class="bg-accent-500 hover:bg-accent-600 text-white px-8 py-4 rounded-lg font-bold shadow-lg shadow-accent-500/30 transition-transform hover:-translate-y-1">
+            احجز سيارة
+          </button>
+          <a href="#services" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-4 rounded-lg font-bold backdrop-blur transition-colors">
+            استكشف خدماتنا
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide" id="slide-1">
+    <div class="slide-bg absolute inset-0 bg-cover bg-center" style="background-image: url('images/truck1.webp');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-900/95 via-brand-900/60 to-transparent"></div>
+    <div class="relative z-10 h-full flex items-center max-w-7xl mx-auto px-4">
+      <div class="hero-text max-w-2xl text-white pt-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-white/20 bg-white/5 backdrop-blur text-xs font-bold mb-6 text-accent-400 uppercase tracking-widest">
+          تكنولوجيا الرفع الحديثة
+        </div>
+        <h1 class="text-5xl md:text-7xl font-display font-black mb-6 leading-tight">
+          الونش الهيدروليكي<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-l from-accent-400 to-white">الحل للأدوار العليا</span>
+        </h1>
+        <p class="text-lg text-slate-200 mb-10 leading-relaxed max-w-lg font-light">
+          نصل للدور 25 بسهولة. نحمي عفشك من خدوش السلالم ونحافظ على واجهة العمارة ونظافة المدخل.
+        </p>
+        <div class="flex gap-4">
+          <button onclick="openCallModal()" class="bg-accent-500 hover:bg-accent-600 text-white px-8 py-4 rounded-lg font-bold shadow-lg shadow-accent-500/30 transition-transform hover:-translate-y-1">
+            اطلب الونش
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide" id="slide-2">
+    <div class="slide-bg absolute inset-0 bg-cover bg-center" style="background-image: url('images/نقل-عفش-المعادى.webp');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-900/95 via-brand-900/60 to-transparent"></div>
+    <div class="relative z-10 h-full flex items-center max-w-7xl mx-auto px-4">
+      <div class="hero-text max-w-2xl text-white pt-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-white/20 bg-white/5 backdrop-blur text-xs font-bold mb-6 text-accent-400 uppercase tracking-widest">
+          حماية قصوى
+        </div>
+        <h1 class="text-5xl md:text-7xl font-display font-black mb-6 leading-tight">
+          تغليف احترافي<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-l from-accent-400 to-white">لكل قطعة غالية</span>
+        </h1>
+        <p class="text-lg text-slate-200 mb-10 leading-relaxed max-w-lg font-light">
+          نستخدم أجود خامات التغليف (بابلز، كرتون، فوم) لحماية الزجاج، الصيني، والأجهزة الكهربائية من أي صدمات.
+        </p>
+        <div class="flex gap-4">
+          <button onclick="openCallModal()" class="bg-accent-500 hover:bg-accent-600 text-white px-8 py-4 rounded-lg font-bold shadow-lg shadow-accent-500/30 transition-transform hover:-translate-y-1">
+            باقات التغليف
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thumbnails -->
+  <div class="thumb-nav">
+    <div class="thumb active" onclick="goToSlide(0)"><img src="images/main_truck.webp"></div>
+    <div class="thumb" onclick="goToSlide(1)"><img src="images/truck1.webp"></div>
+    <div class="thumb" onclick="goToSlide(2)"><img src="images/نقل-عفش-المعادى.webp"></div>
   </div>
 </header>
 
-<!-- ================== HERO SECTION ================== -->
-<section class="hero-container bg-slate-50">
-  <!-- Slide 1 -->
-  <div class="hero-slide active">
-    <div class="hero-text-side order-2 lg:order-1">
-      <div class="max-w-xl mx-auto lg:mx-0 lg:mr-auto pl-4">
-        <span class="inline-block py-1 px-3 rounded-full bg-brand-100 text-brand-700 text-xs font-black mb-4 tracking-wider"><i class="fas fa-crown mr-1"></i> الخدمة رقم #1 في القاهرة</span>
-        <h2 class="font-display font-black text-4xl lg:text-6xl text-slate-900 leading-tight mb-6">نقل عفش <span class="text-brand-600">بدون مفاجآت</span><br>غير سارة</h2>
-        <p class="text-slate-500 text-lg mb-8 leading-relaxed">وداعاً للخدوش والتكسير. نقدم تجربة نقل هندسية مدروسة تضمن وصول مقتنياتك كما هي.</p>
-        <button onclick="openCallModal()" class="bg-brand-600 text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-brand-600/20 hover:bg-brand-700 transition-all">احجز معاينة مجانية</button>
-      </div>
-    </div>
-    <div class="hero-image-side order-1 lg:order-2">
-      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://ik.imagekit.io/mkek1asn5/sayed_Faraana/main_truck.webp');"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent lg:bg-gradient-to-r lg:from-white lg:via-transparent lg:to-transparent"></div>
-    </div>
-  </div>
-  
-  <!-- Slide 2 -->
-  <div class="hero-slide">
-    <div class="hero-text-side order-2 lg:order-1">
-      <div class="max-w-xl mx-auto lg:mx-0 lg:mr-auto pl-4">
-        <span class="inline-block py-1 px-3 rounded-full bg-accent-100 text-accent-700 text-xs font-black mb-4 tracking-wider"><i class="fas fa-building mr-1"></i> الحل للأدوار العليا</span>
-        <h2 class="font-display font-black text-4xl lg:text-6xl text-slate-900 leading-tight mb-6">سلم العمارة ضيق؟ <br><span class="text-accent-500">الونش هو الحل</span></h2>
-        <p class="text-slate-500 text-lg mb-8 leading-relaxed">أوناش هيدروليكية تصل للدور 25 بأمان تام، تحمي عفشك من احتكاك السلالم وتحافظ على هدوء المدخل.</p>
-        <button onclick="openCallModal()" class="bg-accent-500 text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-accent-500/20 hover:bg-accent-600 transition-all">اطلب الونش الآن</button>
-      </div>
-    </div>
-    <div class="hero-image-side order-1 lg:order-2">
-      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://ik.imagekit.io/mkek1asn5/sayed_Faraana/truck1.webp');"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent lg:bg-gradient-to-r lg:from-white lg:via-transparent lg:to-transparent"></div>
-    </div>
-  </div>
-  
-  <!-- Nav Dots -->
-  <div class="absolute bottom-6 left-1/2 lg:left-12 transform -translate-x-1/2 lg:translate-x-0 z-20 flex gap-2">
-    <button class="w-3 h-3 rounded-full bg-brand-600 ring-2 ring-offset-2 ring-transparent" data-index="0"></button>
-    <button class="w-3 h-3 rounded-full bg-slate-300 hover:bg-brand-600 transition-colors" data-index="1"></button>
-  </div>
-</section>
-
-<!-- ================== INFO STRIP ================== -->
-<div class="bg-brand-900 text-white py-4 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 flex justify-between items-center text-center md:text-right">
-    <p class="font-display font-bold text-sm md:text-base"><span class="text-accent-400">عروض خاصة:</span> خصم 20% لسكان المدن الجديدة هذا الأسبوع!</p>
-    <button onclick="openCallModal()" class="bg-white text-brand-900 px-4 py-1.5 rounded-lg font-bold text-xs hover:bg-accent-400 transition-colors">احجز الآن</button>
-  </div>
-</div>
-
-<!-- ================== SERVICES GRID ================== -->
-<section id="services" class="py-16">
+<!-- ================== MYTH BUSTERS (Engagement) ================== -->
+<section id="myths" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <span class="text-brand-600 font-bold tracking-widest text-xs uppercase">خدماتنا</span>
-      <h2 class="font-display font-black text-3xl text-slate-900 mt-2">حلول ذكية لكل احتياجاتك</h2>
+    <div class="text-center mb-16 fade-up">
+      <span class="text-brand-600 font-bold tracking-widest text-xs uppercase">خرافات وحقائق</span>
+      <h2 class="text-4xl font-display font-black text-slate-900 mt-2">لا تدع القلق يفسد فرحتك</h2>
+      <p class="text-slate-500 mt-2">مرر الماوس (أو اضغط) على الكارت لتعرف الحقيقة</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Full Move -->
-      <div class="bg-white rounded-3xl p-6 shadow-card hover-lift border border-slate-100">
-        <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 text-2xl mb-4"><i class="fas fa-truck-moving"></i></div>
-        <h3 class="font-display font-bold text-xl mb-2">النقل الشامل</h3>
-        <p class="text-slate-500 text-sm mb-4">فك، تغليف، نقل، وتركيب. خدمة من الباب للباب بسيارات مغلقة.</p>
-        <button onclick="openCallModal()" class="text-brand-600 font-bold text-sm">التفاصيل &larr;</button>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Myth 1 -->
+      <div class="myth-card fade-up">
+        <div class="myth-inner">
+          <div class="myth-front">
+            <div class="w-14 h-14 bg-red-50 rounded-full flex items-center justify-center text-red-500 text-2xl mb-4">
+              <i class="fas fa-heart-broken"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800">"العفش لازم يتجرح"</h3>
+            <p class="text-sm text-slate-500 mt-2">خرافة شائعة عند النقل..</p>
+            <span class="text-xs text-brand-600 font-bold mt-4 border-b border-brand-600">اقلب الكارت</span>
+          </div>
+          <div class="myth-back">
+            <h3 class="text-xl font-bold mb-3 text-accent-400">الحقيقة: 0% خدوش</h3>
+            <p class="text-sm leading-relaxed px-4">
+              مع التغليف الصحيح واستخدام السيارات المغلقة والعمالة المحترفة، نضمن لك وصول العفش سليم تماماً كما كان.
+            </p>
+          </div>
+        </div>
       </div>
-      <!-- Winch -->
-      <div class="bg-white rounded-3xl p-6 shadow-card hover-lift border border-slate-100">
-        <div class="w-12 h-12 bg-accent-50 rounded-xl flex items-center justify-center text-accent-600 text-2xl mb-4"><i class="fas fa-sort-amount-up"></i></div>
-        <h3 class="font-display font-bold text-xl mb-2">ونش رفع الاثاث</h3>
-        <p class="text-slate-500 text-sm mb-4">للأدوار العليا والسلالم الضيقة. حماية للأثاث وواجهة العمارة.</p>
-        <button onclick="openCallModal()" class="text-accent-600 font-bold text-sm">التفاصيل &larr;</button>
+
+      <!-- Myth 2 -->
+      <div class="myth-card fade-up" style="transition-delay: 0.1s;">
+        <div class="myth-inner">
+          <div class="myth-front">
+            <div class="w-14 h-14 bg-orange-50 rounded-full flex items-center justify-center text-orange-500 text-2xl mb-4">
+              <i class="fas fa-hourglass-half"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800">"النقل بياخد أيام"</h3>
+            <p class="text-sm text-slate-500 mt-2">فوضى في البيت لأسبوع..</p>
+            <span class="text-xs text-brand-600 font-bold mt-4 border-b border-brand-600">اقلب الكارت</span>
+          </div>
+          <div class="myth-back">
+            <h3 class="text-xl font-bold mb-3 text-accent-400">الحقيقة: 6-8 ساعات</h3>
+            <p class="text-sm leading-relaxed px-4">
+              بفضل فريق العمل الكبير والتنظيم، ننجز فك وتغليف ونقل وتركيب شقة كاملة في يوم واحد فقط.
+            </p>
+          </div>
+        </div>
       </div>
-      <!-- Packing -->
-      <div class="bg-white rounded-3xl p-6 shadow-card hover-lift border border-slate-100">
-        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 text-2xl mb-4"><i class="fas fa-box-open"></i></div>
-        <h3 class="font-display font-bold text-xl mb-2">خدمة التغليف</h3>
-        <p class="text-slate-500 text-sm mb-4">بابلز، كرتون، واسترتش لحماية الزجاج والصيني والتحف.</p>
-        <button onclick="openCallModal()" class="text-purple-600 font-bold text-sm">التفاصيل &larr;</button>
+
+      <!-- Myth 3 -->
+      <div class="myth-card fade-up" style="transition-delay: 0.2s;">
+        <div class="myth-inner">
+          <div class="myth-front">
+            <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-500 text-2xl mb-4">
+              <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800">"السعر بيزيد فجأة"</h3>
+            <p class="text-sm text-slate-500 mt-2">إكراميات ومصاريف خفية..</p>
+            <span class="text-xs text-brand-600 font-bold mt-4 border-b border-brand-600">اقلب الكارت</span>
+          </div>
+          <div class="myth-back">
+            <h3 class="text-xl font-bold mb-3 text-accent-400">الحقيقة: سعر نهائي</h3>
+            <p class="text-sm leading-relaxed px-4">
+              نتفق على السعر الشامل (فك، تركيب، نقل، إكراميات) قبل البدء. لا تدفع جنيهاً واحداً زيادة.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================== AREAS & ARTICLES (Dynamic Grid) ================== -->
-<section id="areas" class="py-20 bg-slate-50">
+<!-- ================== EXPANDING GALLERY (Services) ================== -->
+<section id="services" class="py-20 bg-slate-50 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
-    <div class="text-center mb-16">
-      <span class="text-brand-600 font-bold tracking-widest text-xs uppercase">نغطي كل مكان</span>
-      <h2 class="font-display font-black text-3xl md:text-4xl text-slate-900 mt-2">أينما كنت.. نحن بجانبك</h2>
-      <p class="text-slate-500 mt-4 max-w-2xl mx-auto">كل منطقة لها تحدياتها، ونحن نمتلك الخبرة للتعامل معها.</p>
+    <div class="text-center mb-12 fade-up">
+      <h2 class="text-3xl font-display font-black text-slate-900">خدماتنا المتكاملة</h2>
+      <p class="text-slate-500">مرر الماوس لتكتشف التفاصيل (اضغط على الموبايل)</p>
     </div>
 
-    <!-- Articles Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-grid">
+    <!-- Expanding Gallery (Responsive) -->
+    <div class="gallery-container flex flex-col md:flex-row">
       
-      <!-- 1. Nasr City -->
-      <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-        <div class="h-48 overflow-hidden relative">
-          <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-العفش-فى-مدينة-نصر.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> مدينة نصر</div>
+      <div class="gallery-item bg-cover bg-center" style="background-image: url('images/main_truck.webp');">
+        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+          <h3 class="text-2xl font-bold text-white">النقل الشامل</h3>
+          <div class="gallery-content">
+            <p class="text-accent-400 font-bold text-sm">من الباب للباب</p>
+            <div class="gallery-desc text-slate-200 text-sm">
+              خدمة VIP تشمل الفك، التغليف، النقل بسيارات مغلقة، وإعادة التركيب.
+            </div>
+          </div>
         </div>
-        <div class="p-6">
-          <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش مدينة نصر</h3>
-          <div class="pain-point-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> الازدحام الشديد والشوارع المكتظة.</p>
+      </div>
+
+      <div class="gallery-item bg-cover bg-center" style="background-image: url('images/truck1.webp');">
+        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+          <h3 class="text-2xl font-bold text-white">الونش الهيدروليكي</h3>
+          <div class="gallery-content">
+            <p class="text-accent-400 font-bold text-sm">حتى الدور 25</p>
+            <div class="gallery-desc text-slate-200 text-sm">
+              أمان تام للمنقولات وواجهة العمارة. مثالي للسلالم الضيقة.
+            </div>
           </div>
-          <div class="solution-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> سائقين خبراء بالمناورات والطرق البديلة لضمان الوصول في الموعد.</p>
+        </div>
+      </div>
+
+      <div class="gallery-item bg-cover bg-center" style="background-image: url('images/تغليف-العفش.webp');">
+        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+          <h3 class="text-2xl font-bold text-white">التغليف</h3>
+
+          <div class="gallery-content">
+            <p class="text-accent-400 font-bold text-sm">حماية الزجاج</p>
+            <div class="gallery-desc text-slate-200 text-sm">
+              بابلز وكرتون لحماية الصيني والتحف والشاشات..
+            </div>
           </div>
+        </div>
+      </div>
+
+
+<div class="gallery-item bg-cover bg-center" style="background-image: url('images/نقل-عفش-المعادى.webp');">
+        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+          <h3 class="text-2xl font-bold text-white">الفك والتركيب</h3>
+
+          <div class="gallery-content">
+            <p class="text-accent-400 font-bold text-sm">نجارين وفنيين</p>
+            <div class="gallery-desc text-slate-200 text-sm">
+             فك وتركيب غرف النوم، المطابخ، التكييفات، والنجف..
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================== AREA CARDS (With Tags) ================== -->
+<section id="areas" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16 fade-up">
+      <h2 class="text-3xl font-display font-black text-slate-900">نغطي كل مكان في مصر</h2>
+      <p class="text-slate-500 mt-2">اعرف لماذا نحن الأفضل في منطقتك</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Nasr City -->
+      <article class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer fade-up" onclick="openCallModal()">
+        <div class="h-40 relative overflow-hidden rounded-t-2xl">
+          <img src="images/نقل-العفش-فى-مدينة-نصر.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-brand-600">
+            <i class="fas fa-city mr-1"></i> مدينة نصر
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3">
+            <span class="px-2 py-0.5 rounded bg-orange-100 text-orange-600 text-[10px] font-bold">شوارع مزدحمة</span>
+            <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-600 text-[10px] font-bold">أبراج</span>
+          </div>
+          <h3 class="font-bold text-slate-900 mb-2 group-hover:text-brand-600">نقل عفش مدينة نصر</h3>
+          <p class="text-xs text-slate-500 line-clamp-2">خبراء في المناورة في شوارع مدينة نصر واختيار أوقات النقل المناسبة.</p>
+        </div>
+      </article>
+
+      <!-- New Cairo -->
+      <article class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer fade-up" onclick="openCallModal()">
+        <div class="h-40 relative overflow-hidden rounded-t-2xl">
+          <img src="images/main_truck.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-brand-600">
+            <i class="fas fa-building mr-1"></i> التجمع الخامس
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3">
+            <span class="px-2 py-0.5 rounded bg-green-100 text-green-600 text-[10px] font-bold">كمبوندات</span>
+            <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-600 text-[10px] font-bold">تصاريح</span>
+          </div>
+          <h3 class="font-bold text-slate-900 mb-2 group-hover:text-brand-600">نقل عفش التجمع</h3>
+          <p class="text-xs text-slate-500 line-clamp-2">سيارات نظيفة وعمالة بزي موحد للدخول للكمبوندات الراقية.</p>
         </div>
       </article>
 
-      <!-- 2. Heliopolis -->
-      <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-        <div class="h-48 overflow-hidden relative">
-          <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-العفش-بمصر-الجديدة.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> مصر الجديدة</div>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش مصر الجديدة</h3>
-          <div class="pain-point-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> عمارات قديمة بمصاعد صغيرة أو بدون.</p>
-          </div>
-          <div class="solution-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> أوناش هيدروليكية تصل للواجهات مباشرة دون استخدام السلم.</p>
+      <!-- October -->
+      <article class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer fade-up" onclick="openCallModal()">
+        <div class="h-40 relative overflow-hidden rounded-t-2xl">
+          <img src="images/نقل-العفش-فى-اكتوبر.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-brand-600">
+            <i class="fas fa-industry mr-1"></i> أكتوبر
           </div>
         </div>
-      </article>
-
-      <!-- 3. Fifth Settlement -->
-      <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-        <div class="h-48 overflow-hidden relative">
-          <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/main_truck.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> التجمع الخامس</div>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش التجمع الخامس</h3>
-          <div class="pain-point-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> تصاريح الكمبوندات واشتراطات الدخول.</p>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3">
+            <span class="px-2 py-0.5 rounded bg-yellow-100 text-yellow-600 text-[10px] font-bold">مسافات طويلة</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[10px] font-bold">مغلق بإحكام</span>
           </div>
-          <div class="solution-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> نساعدك في الإجراءات وسياراتنا نظيفة ومطابقة للمواصفات.</p>
-          </div>
+          <h3 class="font-bold text-slate-900 mb-2 group-hover:text-brand-600">نقل عفش أكتوبر</h3>
+          <p class="text-xs text-slate-500 line-clamp-2">سيارات مجهزة للسفر والمسافات الطويلة لحماية العفش من الأتربة.</p>
         </div>
       </article>
 
-      <!-- 4. Madinaty -->
-      <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-        <div class="h-48 overflow-hidden relative">
-          <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/لنقل-العفش-بمنطقة-مدينتى.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> مدينتي</div>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش مدينتى</h3>
-          <div class="pain-point-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> لوائح جهاز المدينة الصارمة.</p>
-          </div>
-          <div class="solution-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> عمالة بزي موحد وسيارات مغلقة مسموح لها بالدخول فوراً.</p>
+      <!-- Maadi -->
+      <article class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer fade-up" onclick="openCallModal()">
+        <div class="h-40 relative overflow-hidden rounded-t-2xl">
+          <img src="images/نقل-عفش-المعادى.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-brand-600">
+            <i class="fas fa-tree mr-1"></i> المعادي
           </div>
         </div>
-      </article>
-
-      <!-- 5. Rehab -->
-      <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-        <div class="h-48 overflow-hidden relative">
-          <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/لنقل-العفش-بمنطقة-مدينتى.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> الرحاب</div>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش الرحاب</h3>
-          <div class="pain-point-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> الحفاظ على هدوء وخصوصية السكان.</p>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3">
+            <span class="px-2 py-0.5 rounded bg-red-100 text-red-600 text-[10px] font-bold">شوارع ضيقة</span>
+            <span class="px-2 py-0.5 rounded bg-teal-100 text-teal-600 text-[10px] font-bold">هدوء</span>
           </div>
-          <div class="solution-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> فريق عمل مدرب على العمل بصمت ونظافة تامة.</p>
-          </div>
+          <h3 class="font-bold text-slate-900 mb-2 group-hover:text-brand-600">نقل عفش المعادي</h3>
+          <p class="text-xs text-slate-500 line-clamp-2">سيارات بأحجام خاصة للمرور في شوارع المعادي المشجرة والضيقة.</p>
         </div>
       </article>
 
-      <!-- 6. Sheikh Zayed -->
-      <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-        <div class="h-48 overflow-hidden relative">
-          <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-العفش-فى-الشيخ-زايد.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> الشيخ زايد</div>
+      <!-- Sheikh Zayed -->
+      <article class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer fade-up" onclick="openCallModal()">
+        <div class="h-40 relative overflow-hidden rounded-t-2xl">
+          <img src="images/نقل-العفش-فى-الشيخ-زايد.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-brand-600">
+            <i class="fas fa-home mr-1"></i> الشيخ زايد
+          </div>
         </div>
-        <div class="p-6">
-          <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش الشيخ زايد</h3>
-          <div class="pain-point-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> المسافات الطويلة والتعرض للأتربة.</p>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3">
+            <span class="px-2 py-0.5 rounded bg-indigo-100 text-indigo-600 text-[10px] font-bold">فلل وقصور</span>
+            <span class="px-2 py-0.5 rounded bg-pink-100 text-pink-600 text-[10px] font-bold">تغليف VIP</span>
           </div>
-          <div class="solution-box">
-            <p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> سيارات "كونتينر" مغلقة بالكامل لحماية العفش من الغبار.</p>
-          </div>
+          <h3 class="font-bold text-slate-900 mb-2 group-hover:text-brand-600">نقل الشيخ زايد</h3>
+          <p class="text-xs text-slate-500 line-clamp-2">خدمة تغليف فاخرة للتحف والنجف والأثاث القيم.</p>
         </div>
       </article>
-        
-        <!-- 7. Maadi -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-عفش-المعادى.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> المعادي</div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش المعادى</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> شوارع شجرية ضيقة ومناطق سفارات.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> سيارات بأحجام مناسبة للمناورة وهدوء تام.</p></div>
-          </div>
-        </article>
 
-        <!-- 8. Helwan -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/truck1.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> حلوان</div>
+      <!-- Heliopolis -->
+      <article class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer fade-up" onclick="openCallModal()">
+        <div class="h-40 relative overflow-hidden rounded-t-2xl">
+          <img src="images/نقل-العفش-بمصر-الجديدة.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-brand-600">
+            <i class="fas fa-landmark mr-1"></i> مصر الجديدة
           </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش حلوان</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> البعد عن قلب القاهرة وطرق سريعة.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> سائقين درجة أولى وتأمين شامل على المنقولات.</p></div>
+        </div>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3">
+            <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-600 text-[10px] font-bold">مباني قديمة</span>
+            <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-600 text-[10px] font-bold">ونش</span>
           </div>
-        </article>
+          <h3 class="font-bold text-slate-900 mb-2 group-hover:text-brand-600">نقل مصر الجديدة</h3>
+          <p class="text-xs text-slate-500 line-clamp-2">أوناش تصل للواجهات مباشرة للحفاظ على المداخل الكلاسيكية.</p>
+        </div>
+      </article>
 
-        <!-- 9. Mohandessin -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-عفش-الشيخ-زايد.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> المهندسين</div>
+      <!-- Madinaty -->
+      <article class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer fade-up" onclick="openCallModal()">
+        <div class="h-40 relative overflow-hidden rounded-t-2xl">
+          <img src="images/لنقل-العفش-بمنطقة-مدينتى.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-brand-600">
+            <i class="fas fa-leaf mr-1"></i> مدينتي
           </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش المهندسين</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> النشاط التجاري والازدحام طوال اليوم.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> اختيار أوقات ذكية للنقل وسرعة في التنفيذ.</p></div>
+        </div>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3">
+            <span class="px-2 py-0.5 rounded bg-green-100 text-green-600 text-[10px] font-bold">جهاز المدينة</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[10px] font-bold">التزام</span>
           </div>
-        </article>
+          <h3 class="font-bold text-slate-900 mb-2 group-hover:text-brand-600">نقل عفش مدينتي</h3>
+          <p class="text-xs text-slate-500 line-clamp-2">مطابقون للمواصفات الفنية المطلوبة للدخول لمدينتي.</p>
+        </div>
+      </article>
 
-        <!-- 10. Dokki -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-عفش-الشيخ-زايد.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> الدقي</div>
+      <!-- Haram -->
+      <article class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer fade-up" onclick="openCallModal()">
+        <div class="h-40 relative overflow-hidden rounded-t-2xl">
+          <img src="images/نقل-العفش-balharam.webp" onerror="this.src='images/main_truck.webp'" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-brand-600">
+            <i class="fas fa-pyramid mr-1"></i> الهرم
           </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش الدقي</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> الشوارع الجانبية الضيقة والسلالم القديمة.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> فنيين محترفين في التنزيل اليدوي أو بالونش.</p></div>
+        </div>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3">
+            <span class="px-2 py-0.5 rounded bg-red-100 text-red-600 text-[10px] font-bold">حارات ضيقة</span>
+            <span class="px-2 py-0.5 rounded bg-orange-100 text-orange-600 text-[10px] font-bold">مناورة</span>
           </div>
-        </article>
-
-        <!-- 11. Agouza -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-عفش-الشيخ-زايد.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> العجوزة</div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش العجوزة</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> زحام الكورنيش وصعوبة الركن.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> تنسيق مسبق لحجز مكان السيارة وإنجاز سريع.</p></div>
-          </div>
-        </article>
-
-        <!-- 12. Sheraton -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-العفش-بمصر-الجديدة.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> شيراتون</div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش شيراتون</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> المنطقة مفتوحة وتحتاج التزام بالمواعيد.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> دقة متناهية في المواعيد وعمالة أمينة.</p></div>
-          </div>
-        </article>
-
-        <!-- 13. New Nozha -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-العفش-بمصر-الجديدة.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> النزهة الجديدة</div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش النزهة الجديدة</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> الأبراج السكنية المرتفعة.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> أوناش رفع خاصة تصل لأعلى الطوابق بأمان.</p></div>
-          </div>
-        </article>
-
-        <!-- 14. Gesr El Suez -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-العفش-بمصر-الجديدة.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> جسر السويس</div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش جسر السويس</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> المنطقة الشعبية المزدحمة والأسواق.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> تعامل حازم وسريع في الشارع وتأمين للعفش.</p></div>
-          </div>
-        </article>
-
-        <!-- 15. Mokattam -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-العفش-فى-مدينة-نصر.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> المقطم</div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش بالمقطم</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> مطالع ومنازل الهضبة والرياح.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> سيارات قوية العزم وتغليف محكم ضد الغبار.</p></div>
-          </div>
-        </article>
-
-        <!-- 16. Obour -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/لنقل-العفش-بمنطقة-مدينتى.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> العبور</div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش العبور</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> المناطق الصناعية والطرق السريعة.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> تثبيت الأثاث بأحزمة أمان داخل السيارة.</p></div>
-          </div>
-        </article>
-
-        <!-- 17. October -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-العفش-فى-اكتوبر.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> أكتوبر</div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش اكتوبر</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> حرارة الجو وطول المسافة.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> سيارات بصناديق معزولة حرارياً.</p></div>
-          </div>
-        </article>
-
-        <!-- 18. Haram -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-العفش-بالهرم.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> الهرم</div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش الهرم</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> الشوارع الضيقة جداً والمناطق السياحية.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> سيارات صغيرة (نصف نقل) للمناورة وخبرة في المنطقة.</p></div>
-          </div>
-        </article>
-
-        <!-- 19. Ain Shams -->
-        <article class="bg-white rounded-2xl shadow-card hover-lift overflow-hidden group">
-          <div class="h-48 overflow-hidden relative">
-            <img src="https://ik.imagekit.io/mkek1asn5/sayed_Faraana/نقل-العفش-بمصر-الجديدة.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded text-xs font-bold text-slate-900 shadow-sm"><i class="fas fa-map-marker-alt text-brand-500"></i> عين شمس</div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display font-bold text-lg mb-3 group-hover:text-brand-600">نقل عفش عين شمس</h3>
-            <div class="pain-point-box"><p class="text-xs text-slate-700"><span class="font-bold text-red-600">المشكلة:</span> الكثافة السكانية العالية والشوارع المزدحمة.</p></div>
-            <div class="solution-box"><p class="text-xs text-slate-700"><span class="font-bold text-green-600">الحل:</span> زيادة عدد العمال لإنجاز النقل في وقت قياسي.</p></div>
-          </div>
-        </article>
+          <h3 class="font-bold text-slate-900 mb-2 group-hover:text-brand-600">نقل عفش الهرم</h3>
+          <p class="text-xs text-slate-500 line-clamp-2">سيارات نصف نقل للوصول للمناطق الضيقة في الهرم وفيصل.</p>
+        </div>
+      </article>
 
     </div>
   </div>
 </section>
 
 <!-- ================== FOOTER ================== -->
-<footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 pb-24">
-  <div class="max-w-7xl mx-auto px-4 text-center md:text-right">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
-      <div>
-        <h2 class="font-display font-black text-2xl text-white mb-2">الفراعنة لنقل العفش</h2>
-        <p class="text-sm max-w-sm">شركة مسجلة تقدم خدمات نقل الأثاث في جميع أنحاء الجمهورية بأعلى معايير الجودة والأمان.</p>
+<footer class="bg-brand-900 text-brand-100 py-16">
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-12">
+    <div class="col-span-1 md:col-span-2">
+      <div class="flex items-center gap-3 mb-6">
+        <img src="images/logo.webp" class="w-10 h-10 rounded-lg">
+        <span class="text-2xl font-display font-black text-white">الفراعنة لنقل الأثاث</span>
       </div>
-      <div class="flex gap-4">
-        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="fab fa-whatsapp"></i></a>
-      </div>
+      <p class="text-sm opacity-80 leading-relaxed max-w-sm">
+        نحن لا ننقل العفش فقط، نحن ننقل الثقة. شركة رائدة بخبرة سنوات في السوق المصري.
+      </p>
     </div>
-    <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between text-xs font-bold gap-4">
-      <p>© 2024 جميع الحقوق محفوظة لشركة الفراعنة لنقل العفش.</p>
-      <div class="flex gap-4 justify-center">
-        <a href="#" class="hover:text-white">سياسة الخصوصية</a>
-        <a href="#contact" class="hover:text-white">اتصل بنا</a>
-      </div>
+    
+    <div>
+      <h4 class="text-white font-bold mb-6 border-b border-brand-800 pb-2 inline-block">خدماتنا</h4>
+      <ul class="space-y-3 text-sm">
+        <li><button onclick="openCallModal()" class="hover:text-accent-400 transition-colors">نقل العفش الشامل</button></li>
+        <li><button onclick="openCallModal()" class="hover:text-accent-400 transition-colors">ونش رفع العفش</button></li>
+        <li><button onclick="openCallModal()" class="hover:text-accent-400 transition-colors">تغليف الأثاث</button></li>
+      </ul>
     </div>
+
+    <div>
+      <h4 class="text-white font-bold mb-6 border-b border-brand-800 pb-2 inline-block">تواصل معنا</h4>
+      <ul class="space-y-4 text-sm">
+        <li class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-brand-800 flex items-center justify-center text-accent-400"><i class="fas fa-phone-alt"></i></div>
+          <span class="text-white font-bold dir-ltr">01004672505</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-brand-800 flex items-center justify-center text-accent-400"><i class="fab fa-whatsapp"></i></div>
+          <span>واتساب 24/7</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center mt-12 pt-8 border-t border-brand-800 text-xs opacity-60">
+    &copy; 2025 الفراعنة لنقل الأثاث. جميع الحقوق محفوظة.
   </div>
 </footer>
 
-<!-- ================== FLOATING ACTION BUTTON (CALL) ================== -->
-<button onclick="openCallModal()" class="fixed bottom-6 right-6 z-40 bg-brand-600 hover:bg-brand-500 text-white w-14 h-14 md:w-16 md:h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all animate-bounce">
-  <i class="fas fa-phone -scale-x-100 text-xl md:text-2xl"></i>
-</button>
-
-
-
-
-  
-  
-    
- 
-
-
-  </div>
+<!-- ================== FLOATING ACTION BUTTON (Updated) ================== -->
+<div class="fixed bottom-4 left-4 z-40 md:left-6 md:bottom-6">
+  <button onclick="openCallModal()" class="group flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-full shadow-lg shadow-green-600/40 transition-all hover:scale-105 hover:-translate-y-1 ring-4 ring-white/20">
+    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+      <i class="fas fa-phone-volume text-lg"></i>
+    </div>
+    <span class="font-bold text-sm hidden md:inline-block">إتصل الآن وخد فكرة عن الاسعار</span>
+    <span class="font-bold text-sm md:hidden">إتصل الآن واعرف الاسعار</span>
+  </button>
 </div>
 
-<!-- ================== CALL MODAL ================== -->
-<div id="callModal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
-  <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity" onclick="closeCallModal()"></div>
-  <div class="flex items-center justify-center min-h-screen px-4 py-8">
+<!-- ================== MODAL (Updated) ================== -->
+<div id="callModal" class="fixed inset-0 z-[100] hidden backdrop-blur-md" role="dialog" aria-modal="true">
+  <div class="absolute inset-0 bg-brand-900/80 transition-opacity" onclick="closeCallModal()"></div>
+  <div class="flex items-center justify-center min-h-screen px-4">
     <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-8 relative z-10 transform scale-95 opacity-0 transition-all duration-300" id="callModalContent">
-      <button onclick="closeCallModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-600 transition-colors"><i class="fas fa-times text-xl"></i></button>
-      <div class="w-20 h-20 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-600 ring-8 ring-brand-50/50"><i class="fas fa-headset text-4xl"></i></div>
-      <h3 class="text-center font-display font-black text-2xl text-slate-900 mb-2">تحدث معنا</h3>
-      <p class="text-center text-slate-500 text-sm mb-8">جاهزون للرد على استفساراتك 24/7.</p>
-      <a href="tel:01010354082" onclick="closeCallModal()" class="block w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-xl text-center shadow-lg shadow-brand-600/30 transition-all hover:-translate-y-1 mb-3 flex items-center justify-center gap-2"><i class="fas fa-phone -scale-x-100"></i> اتصال مباشر</a>
-      <div class="bg-slate-50 border border-slate-100 rounded-xl p-4 text-center mb-3"><p class="text-2xl font-black text-slate-800 dir-ltr select-all">01010354082</p></div>
-      <button onclick="closeCallModal()" class="w-full py-3 text-slate-400 font-bold hover:text-slate-600 text-sm">إلغاء</button>
+      <button onclick="closeCallModal()" class="absolute top-4 left-4 text-slate-400 hover:text-brand-900"><i class="fas fa-times text-xl"></i></button>
+      
+      <div class="text-center">
+        <!-- Icon -->
+        <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600 ring-4 ring-green-100">
+          <i class="fas fa-headset text-4xl"></i>
+        </div>
+        
+        <!-- Header -->
+        <h3 class="text-2xl font-bold text-slate-900 mb-2">تحدث مع مسئول نقل العفش</h3>
+        <p class="text-slate-500 text-sm mb-6">خطوة واحدة تفصلك لمعرفة تكلفة سعر نقل العفش</p>
+        
+        <!-- Call To Action (Conversion Point) -->
+        <div class="relative">
+          <div class="absolute -right-2 -top-4 text-4xl text-brand-600 animate-bounce hidden md:block" style="transform: rotate(-15deg);">👇</div>
+          <a href="tel:01004672505" onclick="closeCallModal()" class="block w-full bg-green-600 text-white font-bold py-5 rounded-2xl shadow-xl shadow-green-500/40 hover:bg-green-700 transition-all hover:-translate-y-1 mb-3 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            <div class="relative flex flex-col items-center">
+              <span class="text-lg">إضغط للاتصال الآن</span>
+              <span class="text-2xl font-display font-black dir-ltr mt-1">01004672505</span>
+            </div>
+          </a>
+        </div>
+        
+        <p class="text-[10px] text-slate-400 mb-4">بالضغط على الزر سيتم تحويلك للهاتف مباشرة</p>
+        
+        <button onclick="closeCallModal()" class="w-full py-3 text-slate-400 font-bold hover:text-slate-600 text-sm border-t border-slate-100 mt-2">لا، شكراً</button>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-  // Slider Logic
-  const slides = document.querySelectorAll('.hero-slide');
-  const dots = document.querySelectorAll('.hero-container button[data-index]');
+  // --- Carousel Logic (Thumbnail Nav) ---
+  const slides = document.querySelectorAll('.slide');
+  const thumbs = document.querySelectorAll('.thumb');
   let currentSlide = 0;
-  function setActiveSlide(index) {
+  let slideInterval;
+
+  function showSlide(index) {
+    // Reset all
     slides.forEach(s => s.classList.remove('active'));
-    dots.forEach(d => { d.classList.remove('bg-brand-600', 'ring-2'); d.classList.add('bg-slate-300'); });
+    thumbs.forEach(t => t.classList.remove('active'));
+    
+    // Set active
     slides[index].classList.add('active');
-    if(dots[index]) { dots[index].classList.remove('bg-slate-300'); dots[index].classList.add('bg-brand-600', 'ring-2'); }
+    thumbs[index].classList.add('active');
+    
     currentSlide = index;
   }
-  setInterval(() => { setActiveSlide((currentSlide + 1) % slides.length); }, 5000);
-  dots.forEach(d => d.addEventListener('click', (e) => setActiveSlide(parseInt(e.target.dataset.index))));
-  setActiveSlide(0);
 
-  // Mobile Menu
-  const mobileToggle = document.getElementById('mobile-toggle');
+  function goToSlide(index) {
+    clearInterval(slideInterval);
+    showSlide(index);
+    startAutoSlide();
+  }
+
+  function nextSlide() {
+    let next = (currentSlide + 1) % slides.length;
+    showSlide(next);
+  }
+
+  function startAutoSlide() {
+    slideInterval = setInterval(nextSlide, 12000); // 12 seconds per slide
+  }
+
+  // Init
+  startAutoSlide();
+
+  // --- Scroll Reveal ---
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // --- Mobile Menu ---
+  const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileToggle) mobileToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  if(menuBtn){
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+  }
 
-  // Modal
+  // --- Modal Logic ---
   const modal = document.getElementById('callModal');
   const modalContent = document.getElementById('callModalContent');
+
   function openCallModal() {
     modal.classList.remove('hidden');
-    setTimeout(() => { modalContent.classList.remove('scale-95', 'opacity-0'); modalContent.classList.add('scale-100', 'opacity-100'); }, 10);
+    setTimeout(() => {
+      modalContent.classList.remove('scale-95', 'opacity-0');
+      modalContent.classList.add('scale-100', 'opacity-100');
+    }, 10);
   }
+
   function closeCallModal() {
-    modalContent.classList.remove('scale-100', 'opacity-100'); modalContent.classList.add('scale-95', 'opacity-0');
+    modalContent.classList.remove('scale-100', 'opacity-100');
+    modalContent.classList.add('scale-95', 'opacity-0');
     setTimeout(() => modal.classList.add('hidden'), 300);
   }
+
   document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-    if (!link.closest('#callModal')) link.addEventListener('click', (e) => { e.preventDefault(); openCallModal(); });
-  });
-
-  // Settings Panel Logic
-  function toggleSettings() {
-    document.getElementById('settingsPanel').classList.toggle('closed');
-  }
-
-  const logo = document.getElementById('navbar-logo');
-  const urlInput = document.getElementById('logoUrlInput');
-  const wInput = document.getElementById('logoWidthInput');
-  const hInput = document.getElementById('logoHeightInput');
-  const wVal = document.getElementById('widthVal');
-  const hVal = document.getElementById('heightVal');
-
-  // Initialize inputs with current logo URL
-  urlInput.value = logo.src;
-
-  // Listeners
-  urlInput.addEventListener('input', (e) => {
-    if(e.target.value.trim() !== "") logo.src = e.target.value;
-  });
-
-  wInput.addEventListener('input', (e) => {
-    const val = e.target.value + 'px';
-    logo.style.width = val;
-    // Remove tailwind width class to allow inline style to take precedence if needed, 
-    // though inline style usually wins anyway.
-    wVal.textContent = val;
-  });
-
-  hInput.addEventListener('input', (e) => {
-    const val = e.target.value + 'px';
-    logo.style.height = val;
-    hVal.textContent = val;
+    // Exclude the modal's own link to prevent double triggering or issues
+    if (!link.closest('#callModal')) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openCallModal();
+      });
+    }
   });
 </script>
 
